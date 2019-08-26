@@ -1,0 +1,41 @@
+<nav class="navbar navbar-dark">
+  <button class="navbar-toggler" routerLink="books">
+
+  </button>
+
+</nav>
+
+<h1>My Library</h1>
+<div>
+  <ul class="books">
+    <li *ngFor="let book of bookList" >
+
+      <b routerLink="../buchDetail/{{book.id}}">{{book.title + ' | '}} {{book.id}}</b>
+
+      <button class="btn btn-danger" (click)="deleteBookById(book.id)">Delete</button>
+
+
+    </li>
+  </ul>
+</div>
+<div *ngIf = "!isCreating">
+<button class="btn btn.success" (click) = "openForm()">Create Book</button>
+</div>
+<div *ngIf="isCreating">
+<form [formGroup]="bookForm" (ngSubmit)="createBook()">
+
+  <label>
+    Title: <input type="text" formControlName="title">
+  </label>
+
+  <label>
+    Price: <input type="number" formControlName="price">
+  </label>
+
+  <label>
+    Published: <input type="date" formControlName="published">
+  </label>
+
+  <button type="submit" [disabled] = "!bookForm.valid">Bestätigen</button>
+</form>
+</div>

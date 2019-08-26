@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head> 
+<body>
+<h1>Hello from Spring</h1>
+
+<p th:inline='text'>Wir haben [[${count}]] Bücher.</p>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Titel</th>
+			<th>Preis</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="book : ${bookList}">
+			<td th:text="${book.title}"></td>
+			<td th:text="${book.price}"></td>
+	</tbody>
+
+</table>
+</body>
